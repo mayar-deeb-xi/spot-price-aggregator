@@ -1,25 +1,27 @@
 {
     "name": "@1inch/spot-price-aggregator",
     "version": "0.0.1",
-    "description": "Oracle for querying weighted average of dex prcies",
+    "description": "Oracle for querying weighted average of dex prices",
     "repository": {
         "type": "git",
         "url": "git@github.com:1inch/spot-price-aggregator.git"
     },
     "license": "MIT",
     "dependencies": {
-        "@openzeppelin/contracts": "5.4.0"
+        "@openzeppelin/contracts": "5.4.0",
+        "abitype": "^1.1.1"
     },
     "devDependencies": {
         "@1inch/solidity-utils": "6.7.0",
         "@matterlabs/hardhat-zksync-deploy": "1.6.0",
         "@matterlabs/hardhat-zksync-solc": "1.2.5",
         "@matterlabs/hardhat-zksync-verify": "1.7.0",
+        "@nomicfoundation/ethereumjs-util": "9.0.4",
         "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
         "@nomicfoundation/hardhat-ethers": "3.0.8",
         "@nomicfoundation/hardhat-network-helpers": "1.0.12",
         "@nomicfoundation/hardhat-verify": "2.0.14",
-        "@nomicfoundation/ethereumjs-util": "9.0.4",
+        "@types/mocha": "^10.0.10",
         "chai": "4.5.0",
         "chai-bn": "0.3.1",
         "dotenv": "16.5.0",
@@ -39,14 +41,18 @@
         "solhint": "5.1.0",
         "solidity-coverage": "0.8.16",
         "solidity-docgen": "0.6.0-beta.36",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
         "zksync-ethers": "6.15.0",
-        "zksync-web3": "0.17.1"
+        "zksync-web3": "0.17.1",
+        "zod": "^4.1.11"
     },
     "scripts": {
         "clean": "rimraf artifacts cache coverage contracts/hardhat-dependency-compiler artifacts-zk cache-zk deployments/hardhat",
         "deploy": "hardhat deploy --network",
         "docify": "yarn hardhat docgen",
         "coverage": "hardhat coverage",
+        "gen:abi": "yarn hardhat compile && npx ts-node scripts/extractAbi.ts artifacts/contracts",
         "lint:js": "eslint .",
         "lint:js:fix": "eslint . --fix",
         "lint:sol": "solhint --max-warnings 0 \"contracts/**/*.sol\"",
@@ -61,5 +67,6 @@
     "resolutions": {
         "elliptic": "6.6.1",
         "form-data": "4.0.4"
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

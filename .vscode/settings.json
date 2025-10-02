@@ -1,3 +1,10 @@
 {
-    "solidity.compileUsingRemoteVersion": "0.8.23"
+    "solidity.compileUsingRemoteVersion": "0.8.23",
+    "cSpell.words": [
+        "Chainlink",
+        "gasleft",
+        "initcode",
+        "Offchain",
+        "staticcall"
+    ]
 }

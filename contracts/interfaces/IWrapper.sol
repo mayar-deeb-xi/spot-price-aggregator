@@ -4,6 +4,10 @@ pragma solidity 0.8.23;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+/**
+ * @title IWrapper
+ * @notice Interface for wrapper contracts that enable token conversions cross-chains.
+ */
 interface IWrapper {
     error NotSupportedToken();
     error NotAddedMarket();

@@ -9,7 +9,7 @@ import "./interfaces/IWrapper.sol";
 
 /**
  * @title MultiWrapper
- * @notice Сontract allows for the management of multiple `IWrapper` contracts that can be used to wrap tokens in OffchainOracle's calculations.
+ * @notice Contract allows for the management of multiple `IWrapper` contracts that can be used to wrap tokens in OffchainOracle's calculations.
  * Wrappers are contracts that enable the conversion of tokens from one protocol to another.
  * The contract provides functions to add and remove wrappers, as well as get information about the wrapped tokens and their conversion rates.
  */
@@ -52,8 +52,9 @@ contract MultiWrapper is Ownable {
     }
 
     /**
-     * @notice Adds a distinct wrapper contract that cannot be duplicated. Only the owner can add a wrapper.
+     * @notice Add a unique wrapper contract.
      * @param wrapper The address of the wrapper to be added.
+     * @dev Callable by owner
      */
     function addWrapper(IWrapper wrapper) external onlyOwner {
         if (!_wrappers.add(address(wrapper))) revert WrapperAlreadyAdded();
@@ -61,8 +62,9 @@ contract MultiWrapper is Ownable {
     }
 
     /**
-     * @notice Removes a specified wrapper contract. Only the owner can remove a wrapper.
+     * @notice Remove a specified wrapper contract.
      * @param wrapper The address of the wrapper to be removed.
+     * @dev Callable by owner
      */
     function removeWrapper(IWrapper wrapper) external onlyOwner {
         if (!_wrappers.remove(address(wrapper))) revert UnknownWrapper();
@@ -70,8 +72,9 @@ contract MultiWrapper is Ownable {
     }
 
     /**
-     * @notice Retrieves the wrapped tokens and their conversion rates for a given token.
-     * @dev Iterates over the wrappers to determine the wrapped tokens and their conversion rates.
+     * @notice Retrieve given token wrappers token with its conversion rates.
+     * @dev Iterates through `_wrappers` to retrieve each wrapped token and its associated conversion rate.
+     * @dev implementation limits to double wrapping (i.e., wrapping a token that has already been wrapped once).
      * @param token The token for which to retrieve the wrapped tokens and conversion rates.
      * @return wrappedTokens Tokens obtainable by wrapping the input token, including the input token and a rate of 1e18 for it.
      * @return rates Conversion rates for the wrapped tokens.
@@ -82,23 +85,24 @@ contract MultiWrapper is Ownable {
             uint256[] memory memRates = new uint256[](20);
             uint256 len = 0;
             for (uint256 i = 0; i < _wrappers._inner._values.length; i++) {
-                try IWrapper(address(uint160(uint256(_wrappers._inner._values[i])))).wrap(token) returns (IERC20 wrappedToken, uint256 rate) {
-                    memWrappedTokens[len] = wrappedToken;
-                    memRates[len] = rate;
+                try IWrapper(address(uint160(uint256(_wrappers._inner._values[i])))).wrap(token) returns (IERC20 wrappedToken1, uint256 rate1) {
+                    memWrappedTokens[len] = wrappedToken1;
+                    memRates[len] = rate1;
                     len += 1;
                     for (uint256 j = 0; j < _wrappers._inner._values.length; j++) {
                         if (i != j) {
-                            try IWrapper(address(uint160(uint256(_wrappers._inner._values[j])))).wrap(wrappedToken) returns (IERC20 wrappedToken2, uint256 rate2) {
+                            try IWrapper(address(uint160(uint256(_wrappers._inner._values[j])))).wrap(wrappedToken1) returns (IERC20 wrappedToken2, uint256 rate2) {
                                 bool used = false;
                                 for (uint256 k = 0; k < len; k++) {
-                                    if (wrappedToken2 == memWrappedTokens[k]) {
+                                    // check if we already use this token
+                                    if (memWrappedTokens[k] == wrappedToken2) {
                                         used = true;
                                         break;
                                     }
                                 }
                                 if (!used) {
                                     memWrappedTokens[len] = wrappedToken2;
-                                    memRates[len] = Math.mulDiv(rate, rate2, 1e18);
+                                    memRates[len] = Math.mulDiv(rate1, rate2, 1e18);
                                     len += 1;
                                 }
                             } catch {
