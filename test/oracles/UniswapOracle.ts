@@ -6,7 +6,7 @@ import {
     defaultValues,
     deployContract,
 } from "../helpers.js";
-import { UniswapOracleAbi } from "../../artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
+import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
 
 const { Uniswap } = deployParams;
 

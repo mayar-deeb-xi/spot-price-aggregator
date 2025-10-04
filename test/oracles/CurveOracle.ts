@@ -12,16 +12,16 @@ import {
     tokens,
 } from "../helpers.js";
 
-import { MultiWrapperAbi } from "../../artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
-import { OffchainOracleAbi } from "../../artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
-import { CurveOracleAbi } from "../../artifacts/contracts/oracles/CurveOracle.sol/CurveOracle.js";
-import { CurveOracleCRPAbi } from "../../artifacts/contracts/oracles/CurveOracleCRP.sol/CurveOracleCRP.js";
-import { MooniswapOracleAbi } from "../../artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
-import { UniswapOracleAbi } from "../../artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
-import { AaveWrapperV1Abi } from "../../artifacts/contracts/wrappers/AaveWrapperV1.sol/AaveWrapperV1.js";
-import { AaveWrapperV2Abi } from "../../artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2.js";
-import { BaseCoinWrapperAbi } from "../../artifacts/contracts/wrappers/BaseCoinWrapper.sol/BaseCoinWrapper.js";
+import { MultiWrapperAbi } from "~/artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
+import { OffchainOracleAbi } from "~/artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
+import { CurveOracleAbi } from "~/artifacts/contracts/oracles/CurveOracle.sol/CurveOracle.js";
+import { CurveOracleCRPAbi } from "~/artifacts/contracts/oracles/CurveOracleCRP.sol/CurveOracleCRP.js";
+import { MooniswapOracleAbi } from "~/artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
+import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { AaveWrapperV1Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV1.sol/AaveWrapperV1.js";
+import { AaveWrapperV2Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2.js";
+import { BaseCoinWrapperAbi } from "~/artifacts/contracts/wrappers/BaseCoinWrapper.sol/BaseCoinWrapper.js";
 import { Address, StrictBaseContract } from "../../types/common.js";
 
 const { AaveWrapperV2, Curve, Uniswap, UniswapV2, UniswapV3 } = deployParams;

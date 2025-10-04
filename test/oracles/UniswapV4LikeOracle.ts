@@ -7,16 +7,16 @@ import {
     testRateOffchainOracle,
     deployContract,
 } from "../helpers.js";
-import { UniswapV2LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV2LikeOracle.sol/UniswapV2LikeOracle.js";
-import { UniswapV4LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV4LikeOracle.sol/UniswapV4LikeOracle.js";
-import { AaveWrapperV1Abi } from "../../artifacts/contracts/wrappers/AaveWrapperV1.sol/AaveWrapperV1.js";
-import { UniswapOracleAbi } from "../../artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
-import { MooniswapOracleAbi } from "../../artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
-import { BaseCoinWrapperAbi } from "../../artifacts/contracts/wrappers/BaseCoinWrapper.sol/BaseCoinWrapper.js";
-import { AaveWrapperV2Abi } from "../../artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2.js";
-import { MultiWrapperAbi } from "../../artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
+import { UniswapV2LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV2LikeOracle.sol/UniswapV2LikeOracle.js";
+import { UniswapV4LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV4LikeOracle.sol/UniswapV4LikeOracle.js";
+import { AaveWrapperV1Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV1.sol/AaveWrapperV1.js";
+import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
+import { MooniswapOracleAbi } from "~/artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
+import { BaseCoinWrapperAbi } from "~/artifacts/contracts/wrappers/BaseCoinWrapper.sol/BaseCoinWrapper.js";
+import { AaveWrapperV2Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2.js";
+import { MultiWrapperAbi } from "~/artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
 import { Address } from "abitype";
-import { OffchainOracleAbi } from "../../artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
+import { OffchainOracleAbi } from "~/artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
 
 const { UniswapV2, UniswapV4, Uniswap, AaveWrapperV2 } = deployParams;
 

@@ -1,8 +1,8 @@
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "@1inch/solidity-utils";
 import { tokens, deployParams, testRate, deployContract } from "../helpers.js";
-import { SynthetixOracleAbi } from "../../artifacts/contracts/oracles/SynthetixOracle.sol/SynthetixOracle";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle";
+import { SynthetixOracleAbi } from "~/artifacts/contracts/oracles/SynthetixOracle.sol/SynthetixOracle";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle";
 import { Address } from "../../types/common.js";
 const { Synthetix, UniswapV3 } = deployParams;
 

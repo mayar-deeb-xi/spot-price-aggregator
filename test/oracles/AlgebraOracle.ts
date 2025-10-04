@@ -1,10 +1,9 @@
 import { resetHardhatNetworkFork } from "@1inch/solidity-utils/hardhat-setup";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { ethers, network } from "hardhat";
-import { AlgebraOracleAbi } from "../../artifacts/contracts/oracles/AlgebraOracle.sol/AlgebraOracle.js";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { AlgebraOracleAbi } from "~/artifacts/contracts/oracles/AlgebraOracle.sol/AlgebraOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 import { deployContract, deployParams, testRate, tokens } from "../helpers.js";
-
 
 const { QuickSwapV3, UniswapV3Polygon } = deployParams;
 
@@ -21,7 +20,8 @@ describe("AlgebraOracle", function () {
         // [parameters ref](contracts/oracles/AlgebraOracle.sol)
         const algebraOracle = await deployContract<AlgebraOracleAbi>(
             "AlgebraOracle",
-            [QuickSwapV3.factory, QuickSwapV3.initcodeHash]);
+            [QuickSwapV3.factory, QuickSwapV3.initcodeHash]
+        );
 
         // [parameters ref](contracts/oracles/UniswapV3LikeOracle.sol)
         const uniswapV3Oracle = await deployContract<UniswapV3LikeOracleAbi>(
@@ -29,7 +29,7 @@ describe("AlgebraOracle", function () {
             [
                 UniswapV3Polygon.factory,
                 UniswapV3Polygon.initcodeHash,
-                UniswapV3Polygon.fees
+                UniswapV3Polygon.fees,
             ]
         );
 

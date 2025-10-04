@@ -9,7 +9,7 @@ import {
     measureGas,
     deployContract,
 } from "../helpers.js";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 
 const { UniswapV3, Slipstream } = deployParams;
 

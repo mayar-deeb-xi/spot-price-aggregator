@@ -9,8 +9,8 @@ import {
     measureGas,
     deployContract,
 } from "../helpers.js";
-import { SolidlyOracleAbi } from "../../artifacts/contracts/oracles/SolidlyOracle.sol/SolidlyOracle.js";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { SolidlyOracleAbi } from "~/artifacts/contracts/oracles/SolidlyOracle.sol/SolidlyOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 
 const { VelodromeV2, UniswapV3 } = deployParams;
 const { thresholdFilter } = defaultValues;

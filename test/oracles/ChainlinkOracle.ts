@@ -1,8 +1,8 @@
 import { expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { ethers } from "hardhat";
-import { ChainlinkOracleAbi } from "../../artifacts/contracts/oracles/ChainlinkOracle.sol/ChainlinkOracle.js";
-import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { ChainlinkOracleAbi } from "~/artifacts/contracts/oracles/ChainlinkOracle.sol/ChainlinkOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 import { deployContract, deployParams, testRate, tokens } from "../helpers.js";
 
 const { Chainlink, UniswapV3 } = deployParams;

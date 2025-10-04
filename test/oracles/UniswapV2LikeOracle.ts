@@ -6,7 +6,7 @@ import {
     defaultValues,
     deployContract,
 } from "../helpers.js";
-import { UniswapV2LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV2LikeOracle.sol/UniswapV2LikeOracle.js";
+import { UniswapV2LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV2LikeOracle.sol/UniswapV2LikeOracle.js";
 
 const { ShibaSwap, UniswapV2 } = deployParams;
 
