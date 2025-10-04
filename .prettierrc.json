@@ -34,7 +34,7 @@
             "files": "*.ts",
             "options": {
                 "options": {
-                    "printWidth": 520
+                    "printWidth": 150
                 }
             }
         }

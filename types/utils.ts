@@ -128,10 +128,14 @@ export type ContractFunctionReturnType<
         : never
     : unknown;
 
+type NonEmptyString<T> = T extends "" ? never : string;
+
 export type AbiParametersToPrimitiveTypes2<
     abiParameters extends readonly AbiParameter[],
     abiParameterKind extends AbiParameterKind = AbiParameterKind
-> = abiParameters[number]["name"] extends string
+> = abiParameters[number]["name"] extends NonEmptyString<
+    abiParameters[number]["name"]
+>
     ? {
           [k in abiParameters[number]["name"]]: AbiParameterToPrimitiveType<
               abiParameters[number],

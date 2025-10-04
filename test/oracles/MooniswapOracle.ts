@@ -1,0 +1,92 @@
+import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { tokens, deployParams, testRate, deployContract } from "../helpers.js";
+import { MooniswapOracleAbi } from "../../artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
+import { UniswapV3LikeOracleAbi } from "../../artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+
+const { Mooniswap, UniswapV3 } = deployParams;
+
+describe("MooniswapOracle", function () {
+    async function initContracts() {
+        const mooniswapOracle = await deployContract<MooniswapOracleAbi>(
+            "MooniswapOracle",
+            [Mooniswap.factory]
+        );
+        const uniswapV3Oracle = await deployContract<UniswapV3LikeOracleAbi>(
+            "UniswapV3LikeOracle",
+            [UniswapV3.factory, UniswapV3.initcodeHash, UniswapV3.fees]
+        );
+        return { mooniswapOracle, uniswapV3Oracle };
+    }
+
+    it("ETH -> DAI", async function () {
+        const { mooniswapOracle, uniswapV3Oracle } = await loadFixture(
+            initContracts
+        );
+        await testRate(
+            [tokens.ETH, tokens.WETH],
+            tokens.DAI,
+            tokens.NONE,
+            mooniswapOracle,
+            uniswapV3Oracle,
+            0.2
+        );
+    });
+
+    it("DAI -> ETH", async function () {
+        const { mooniswapOracle, uniswapV3Oracle } = await loadFixture(
+            initContracts
+        );
+        await testRate(
+            tokens.DAI,
+            [tokens.ETH, tokens.WETH],
+            tokens.NONE,
+            mooniswapOracle,
+            uniswapV3Oracle,
+            0.2
+        );
+    });
+
+    it("ETH -> USDC", async function () {
+        const { mooniswapOracle, uniswapV3Oracle } = await loadFixture(
+            initContracts
+        );
+        await testRate(
+            [tokens.ETH, tokens.WETH],
+            tokens.USDC,
+            tokens.NONE,
+            mooniswapOracle,
+            uniswapV3Oracle,
+            0.2
+        );
+    });
+
+    it.skip("USDC -> 1INCH", async function () {
+        // Skipped because Mooniswap was deprecated and USDC<->1INCH pool liquidity is not related to price, so no liquidity is provided
+        const { mooniswapOracle, uniswapV3Oracle } = await loadFixture(
+            initContracts
+        );
+        await testRate(
+            tokens.USDC,
+            tokens["1INCH"],
+            tokens.NONE,
+            mooniswapOracle,
+            uniswapV3Oracle,
+            0.2
+        );
+    });
+
+    it.skip("ETH -> USDC -> 1INCH", async function () {
+        // Skipped because Mooniswap was deprecated and USDC<->1INCH pool liquidity is not related to price, so no liquidity is provided
+        const { mooniswapOracle, uniswapV3Oracle } = await loadFixture(
+            initContracts
+        );
+        await testRate(
+            [tokens.ETH, tokens.WETH],
+            tokens["1INCH"],
+            tokens.USDC,
+            mooniswapOracle,
+            uniswapV3Oracle,
+            0.2
+        );
+    });
+});
