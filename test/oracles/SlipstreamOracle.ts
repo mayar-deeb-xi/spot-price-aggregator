@@ -125,25 +125,21 @@ describe("SlipstreamOracle", function () {
                 initContracts
             );
             await measureGas(
-                await slipstreamOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.WETH,
-                        tokens.optimistic.USDC,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await slipstreamOracle.getRate(
+                    tokens.optimistic.WETH,
+                    tokens.optimistic.USDC,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "SlipstreamOracle WETH -> USDC"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.WETH,
-                        tokens.optimistic.USDC,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.optimistic.WETH,
+                    tokens.optimistic.USDC,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle WETH -> USDC"
             );
         });
@@ -153,25 +149,21 @@ describe("SlipstreamOracle", function () {
                 initContracts
             );
             await measureGas(
-                await slipstreamOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.USDC,
-                        tokens.optimistic.WETH,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await slipstreamOracle.getRate(
+                    tokens.optimistic.USDC,
+                    tokens.optimistic.WETH,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "SlipstreamOracle USDC -> WETH"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.USDC,
-                        tokens.optimistic.WETH,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.optimistic.USDC,
+                    tokens.optimistic.WETH,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle USDC -> WETH"
             );
         });
@@ -181,25 +173,21 @@ describe("SlipstreamOracle", function () {
                 initContracts
             );
             await measureGas(
-                await slipstreamOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.WETH,
-                        tokens.optimistic.USDC,
-                        tokens.optimistic.OP,
-                        thresholdFilter
-                    ),
+                await slipstreamOracle.getRate(
+                    tokens.optimistic.WETH,
+                    tokens.optimistic.USDC,
+                    tokens.optimistic.OP,
+                    thresholdFilter
+                ),
                 "SlipstreamOracle WETH -> OP -> USDC"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.optimistic.WETH,
-                        tokens.optimistic.USDC,
-                        tokens.optimistic.OP,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.optimistic.WETH,
+                    tokens.optimistic.USDC,
+                    tokens.optimistic.OP,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle WETH -> OP -> USDC"
             );
         });

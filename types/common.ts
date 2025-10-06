@@ -1,5 +1,11 @@
-import type { Abi, AbiStateMutability, Address } from "abitype";
-import { AbiParametersToPrimitiveTypes } from "abitype";
+import type {
+    Abi,
+    AbiParameter,
+    AbiParameterKind,
+    AbiParameterToPrimitiveType,
+    AbiStateMutability,
+    Address,
+} from "abitype";
 import {
     BaseContract,
     ContractRunner,
@@ -10,6 +16,7 @@ import {
     ContractFunctionName,
     ContractFunctionReturnType,
     FallbackToUndefined,
+    Pretty,
 } from "./utils";
 
 export { Address };
@@ -20,10 +27,24 @@ export type StrictBaseContract<
     abi extends Abi | readonly unknown[] = Abi,
     mutability extends AbiStateMutability = AbiStateMutability
 > = BaseContract & {
-    [k in ContractFunctionName<abi>]: (
+    [k in ContractFunctionName<abi, mutability>]: (
         ...[]: ContractFunctionArgs<abi, mutability, k>
-    ) => Promise<ContractFunctionReturnType<abi, mutability, k>>;
+    ) => Promise<
+        ContractFunctionReturnType<abi, mutability, k> &
+            ContractTransactionResponse &
+            Record<string, any>
+    >;
 };
+
+export type AbiParametersToPrimitiveTypes<
+    abiParameters extends readonly AbiParameter[],
+    abiParameterKind extends AbiParameterKind = AbiParameterKind
+> = Pretty<{
+    [key in keyof abiParameters]: AbiParameterToPrimitiveType<
+        abiParameters[key],
+        abiParameterKind
+    >;
+}>;
 
 export type DeployContractParameters<abi extends Abi = Abi> =
     AbiParametersToPrimitiveTypes<
@@ -32,7 +53,8 @@ export type DeployContractParameters<abi extends Abi = Abi> =
         >
     >;
 
-export type DeployContractReturn<abi extends Abi = Abi> = BaseContract &
+export type DeployContractReturn<abi extends Abi = Abi> = Address &
+    BaseContract &
     Omit<StrictBaseContract<abi>, keyof BaseContract> & {
         deploymentTransaction(): ContractTransactionResponse;
         connect: (runner: null | ContractRunner) => DeployContractReturn<abi>;

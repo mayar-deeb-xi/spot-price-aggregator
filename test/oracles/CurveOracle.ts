@@ -261,25 +261,21 @@ describe("CurveOracle", function () {
         it("USDT -> WBTC", async function () {
             const { curveOracle, uniswapV3Oracle } = await loadFixture(fixture);
             await measureGas(
-                await curveOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.USDT,
-                        tokens.WBTC,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await curveOracle.getRate(
+                    tokens.USDT,
+                    tokens.WBTC,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "CurveOracle usdt -> wbtc"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.USDT,
-                        tokens.WBTC,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.USDT,
+                    tokens.WBTC,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle usdt -> wbtc"
             );
         });
@@ -287,25 +283,21 @@ describe("CurveOracle", function () {
         it("WBTC -> USDT", async function () {
             const { curveOracle, uniswapV3Oracle } = await loadFixture(fixture);
             await measureGas(
-                await curveOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.WBTC,
-                        tokens.USDT,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await curveOracle.getRate(
+                    tokens.WBTC,
+                    tokens.USDT,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "CurveOracle wbtc -> usdt"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.WBTC,
-                        tokens.USDT,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.WBTC,
+                    tokens.USDT,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle wbtc -> usdt"
             );
         });
@@ -313,25 +305,21 @@ describe("CurveOracle", function () {
         it("WBTC -> WETH", async function () {
             const { curveOracle, uniswapV3Oracle } = await loadFixture(fixture);
             await measureGas(
-                await curveOracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.WBTC,
-                        tokens.WETH,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await curveOracle.getRate(
+                    tokens.WBTC,
+                    tokens.WETH,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "CurveOracle wbtc -> weth"
             );
             await measureGas(
-                await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
-                        tokens.WBTC,
-                        tokens.WETH,
-                        tokens.NONE,
-                        thresholdFilter
-                    ),
+                await uniswapV3Oracle.getRate(
+                    tokens.WBTC,
+                    tokens.WETH,
+                    tokens.NONE,
+                    thresholdFilter
+                ),
                 "UniswapV3Oracle wbtc -> weth"
             );
         });

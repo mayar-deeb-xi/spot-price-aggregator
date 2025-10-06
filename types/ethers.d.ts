@@ -6,13 +6,17 @@ import { BaseContract as OriginalBaseContract } from "ethers/contract";
 import { StrictBaseContract } from "./common";
 
 declare module "ethers" {
-    class BaseContract extends Omit<OriginalBaseContract, "connect"> {
+    class BaseContract extends Omit<
+        OriginalBaseContract,
+        "connect",
+        "getAddress"
+    > {
         getAddress: () => Promise<Address>;
         interface: any;
     }
 }
 
-// import "hardhat/types/runtime";
+import "hardhat/types/runtime";
 
 declare module "hardhat/types/runtime" {
     interface HardhatEthersHelpers {

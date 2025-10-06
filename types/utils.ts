@@ -118,7 +118,8 @@ export type ContractFunctionReturnType<
                   mutability,
                   functionName,
                   args
-              >["outputs"]
+              >["outputs"],
+              "outputs"
           > extends infer types
         ? types extends readonly []
             ? void
@@ -137,7 +138,7 @@ export type AbiParametersToPrimitiveTypes2<
     abiParameters[number]["name"]
 >
     ? {
-          [k in abiParameters[number]["name"]]: AbiParameterToPrimitiveType<
+          [Index in abiParameters[number]["name"]]: AbiParameterToPrimitiveType<
               abiParameters[number],
               abiParameterKind
           >;
@@ -152,3 +153,5 @@ export type AbiParametersToPrimitiveTypes2<
 export type FallbackToUndefined<T> = [T] extends [never] ? [] : T;
 
 export type Override<T, R> = Omit<T, keyof R> & R;
+
+export type Pretty<type> = { [key in keyof type]: type[key] } & unknown;
