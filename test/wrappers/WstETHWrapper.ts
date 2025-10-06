@@ -1,8 +1,8 @@
+import { deployContract, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { ethers } from "hardhat";
-import { expect } from "@1inch/solidity-utils";
-import { deployContract, tokens } from "../helpers.js";
 import { WstETHWrapperAbi } from "~/artifacts/contracts/wrappers/WstETHWrapper.sol/WstETHWrapper.js";
+import { tokens } from "../helpers.js";
 
 describe("WstETHWrapper", function () {
     async function initContracts() {

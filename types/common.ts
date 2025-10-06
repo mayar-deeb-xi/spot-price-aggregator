@@ -1,33 +1,29 @@
 import type { Abi, AbiStateMutability, Address } from "abitype";
-import { BaseContract } from "ethers";
+import { AbiParametersToPrimitiveTypes } from "abitype";
+import {
+    BaseContract,
+    ContractRunner,
+    ContractTransactionResponse,
+} from "ethers";
 import {
     ContractFunctionArgs,
     ContractFunctionName,
     ContractFunctionReturnType,
+    FallbackToUndefined,
 } from "./utils";
-import { AbiParametersToPrimitiveTypes } from "abitype";
-import { ContractTransactionResponse } from "ethers";
-import { ethers } from "hardhat";
 
-export type Hash = `0x${string}`;
 export { Address };
-
-type BaseContract2 = Omit<BaseContract, "getAddress"> & {
-    getAddress: () => Promise<Hash>;
-};
+export type Hash = `0x${string}`;
+export type Token = Address;
 
 export type StrictBaseContract<
     abi extends Abi | readonly unknown[] = Abi,
     mutability extends AbiStateMutability = AbiStateMutability
-> = Omit<BaseContract2, "getAddress"> & { getAddress: () => Promise<Hash> } & {
+> = BaseContract & {
     [k in ContractFunctionName<abi>]: (
         ...[]: ContractFunctionArgs<abi, mutability, k>
     ) => Promise<ContractFunctionReturnType<abi, mutability, k>>;
 };
-
-export type Token = Address;
-
-type FallbackToUndefined<T> = [T] extends [never] ? [] : T;
 
 export type DeployContractParameters<abi extends Abi = Abi> =
     AbiParametersToPrimitiveTypes<
@@ -36,8 +32,8 @@ export type DeployContractParameters<abi extends Abi = Abi> =
         >
     >;
 
-export type DeployContractReturn<abi extends Abi = Abi> = Promise<
-    BaseContract2 & {
+export type DeployContractReturn<abi extends Abi = Abi> = BaseContract &
+    Omit<StrictBaseContract<abi>, keyof BaseContract> & {
         deploymentTransaction(): ContractTransactionResponse;
-    } & Omit<StrictBaseContract<abi>, keyof BaseContract2>
->;
+        connect: (runner: null | ContractRunner) => DeployContractReturn<abi>;
+    };

@@ -1,7 +1,8 @@
+import { deployContract } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { tokens, deployParams, testRate, deployContract } from "../helpers.js";
 import { MooniswapOracleAbi } from "~/artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { deployParams, testRate, tokens } from "../helpers.js";
 
 const { Mooniswap, UniswapV3 } = deployParams;
 

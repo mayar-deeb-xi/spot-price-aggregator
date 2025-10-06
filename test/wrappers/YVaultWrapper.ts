@@ -1,7 +1,7 @@
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { expect, ether } from "@1inch/solidity-utils";
-import { deployContract, tokens } from "../helpers.js";
 import { YVaultWrapperAbi } from "~/artifacts/contracts/wrappers/YVaultWrapper.sol/YVaultWrapper.js";
+import { tokens } from "../helpers.js";
 
 describe("YVaultWrapper", function () {
     async function initContracts() {

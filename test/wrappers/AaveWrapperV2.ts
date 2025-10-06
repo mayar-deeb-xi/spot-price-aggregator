@@ -1,8 +1,7 @@
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { expect, ether } from "@1inch/solidity-utils";
-import { deployContract } from "../helpers";
-import { tokens, deployParams } from "../helpers.js";
 import { AaveWrapperV2Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2";
+import { deployParams, tokens } from "../helpers.js";
 
 const { AaveWrapperV2 } = deployParams;
 

@@ -1,14 +1,9 @@
-import { ether, expect } from "@1inch/solidity-utils";
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { DodoV2OracleAbi } from "~/artifacts/contracts/oracles/DodoV2Oracle.sol/DodoV2Oracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 import { Address, StrictBaseContract } from "../../types/common.js";
-import {
-    defaultValues,
-    deployContract,
-    deployParams,
-    tokens,
-} from "../helpers.js";
+import { defaultValues, deployParams, tokens } from "../helpers.js";
 
 const { DodoV2, UniswapV3 } = deployParams;
 

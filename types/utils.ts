@@ -148,3 +148,7 @@ export type AbiParametersToPrimitiveTypes2<
               abiParameterKind
           >;
       };
+
+export type FallbackToUndefined<T> = [T] extends [never] ? [] : T;
+
+export type Override<T, R> = Omit<T, keyof R> & R;

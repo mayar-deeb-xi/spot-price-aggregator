@@ -317,16 +317,3 @@ export async function testRateOffchainOracle(
         relativeDiff
     );
 }
-
-export async function deployContract<abi extends Abi = Abi>(
-    name: string,
-    parameters: DeployContractParameters<abi>
-): DeployContractReturn<abi> {
-    const ContractFactory = await ethers.getContractFactory<
-        unknown[],
-        StrictBaseContract<abi>
-    >(name);
-    const instance = await ContractFactory.deploy(...parameters);
-    await instance.waitForDeployment();
-    return instance as unknown as Awaited<DeployContractReturn<abi>>;
-}

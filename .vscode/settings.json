@@ -6,5 +6,6 @@
         "initcode",
         "Offchain",
         "staticcall"
-    ]
+    ],
+    "editor.formatOnSave": true
 }

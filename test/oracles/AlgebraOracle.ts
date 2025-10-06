@@ -1,9 +1,10 @@
 import { resetHardhatNetworkFork } from "@1inch/solidity-utils/hardhat-setup";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { ethers, network } from "hardhat";
+import { network } from "hardhat";
 import { AlgebraOracleAbi } from "~/artifacts/contracts/oracles/AlgebraOracle.sol/AlgebraOracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
-import { deployContract, deployParams, testRate, tokens } from "../helpers.js";
+import { deployParams, testRate, tokens } from "../helpers.js";
+import { deployContract } from "@1inch/solidity-utils";
 
 const { QuickSwapV3, UniswapV3Polygon } = deployParams;
 

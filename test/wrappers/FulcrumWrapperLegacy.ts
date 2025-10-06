@@ -1,9 +1,9 @@
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { expect, ether } from "@1inch/solidity-utils";
-import { deployContract, tokens } from "../helpers.js";
+import { Address } from "abitype";
 import { ethers } from "hardhat";
 import { FulcrumWrapperLegacyAbi } from "~/artifacts/contracts/wrappers/FulcrumWrapperLegacy.sol/FulcrumWrapperLegacy.js";
-import { Address } from "abitype";
+import { tokens } from "../helpers.js";
 
 const tests = [
     {

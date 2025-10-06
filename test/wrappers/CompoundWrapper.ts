@@ -1,7 +1,7 @@
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { expect, ether } from "@1inch/solidity-utils";
-import { tokens, deployParams, deployContract } from "../helpers.js";
 import { CompoundLikeWrapperAbi } from "~/artifacts/contracts/wrappers/CompoundLikeWrapper.sol/CompoundLikeWrapper.js";
+import { deployParams, tokens } from "../helpers.js";
 const { CompoundWrapper } = deployParams;
 
 describe("CompoundWrapper", function () {

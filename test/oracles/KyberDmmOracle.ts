@@ -1,9 +1,8 @@
-import { expect } from "@1inch/solidity-utils";
+import { deployContract, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { KyberDmmOracleAbi } from "~/artifacts/contracts/oracles/KyberDmmOracle.sol/KyberDmmOracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
-import { StrictBaseContract } from "../../types/common.js";
-import { deployContract, deployParams, testRate, tokens } from "../helpers.js";
+import { deployParams, testRate, tokens } from "../helpers.js";
 
 const { KyberDmm, UniswapV3 } = deployParams;
 

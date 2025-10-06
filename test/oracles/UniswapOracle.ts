@@ -1,12 +1,7 @@
+import { deployContract, ether, expect } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { expect, ether } from "@1inch/solidity-utils";
-import {
-    tokens,
-    deployParams,
-    defaultValues,
-    deployContract,
-} from "../helpers.js";
 import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
+import { defaultValues, deployParams, tokens } from "../helpers.js";
 
 const { Uniswap } = deployParams;
 

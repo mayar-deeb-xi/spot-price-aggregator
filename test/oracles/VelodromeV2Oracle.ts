@@ -1,16 +1,16 @@
+import { deployContract } from "@1inch/solidity-utils";
+import { resetHardhatNetworkFork } from "@1inch/solidity-utils/hardhat-setup";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { network } from "hardhat";
-import { resetHardhatNetworkFork } from "@1inch/solidity-utils/hardhat-setup";
-import {
-    tokens,
-    deployParams,
-    defaultValues,
-    testRate,
-    measureGas,
-    deployContract,
-} from "../helpers.js";
 import { SolidlyOracleAbi } from "~/artifacts/contracts/oracles/SolidlyOracle.sol/SolidlyOracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import {
+    defaultValues,
+    deployParams,
+    measureGas,
+    testRate,
+    tokens,
+} from "../helpers.js";
 
 const { VelodromeV2, UniswapV3 } = deployParams;
 const { thresholdFilter } = defaultValues;

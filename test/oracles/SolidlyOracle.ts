@@ -1,9 +1,10 @@
-import { network } from "hardhat";
-import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { deployContract } from "@1inch/solidity-utils";
 import { resetHardhatNetworkFork } from "@1inch/solidity-utils/hardhat-setup";
-import { tokens, deployParams, testRate, deployContract } from "../helpers.js";
-import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { network } from "hardhat";
 import { SolidlyOracleAbi } from "~/artifacts/contracts/oracles/SolidlyOracle.sol/SolidlyOracle.js";
+import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
+import { deployParams, testRate, tokens } from "../helpers.js";
 
 const { Aerodrome, VelocimeterV2, UniswapV3Base } = deployParams;
 

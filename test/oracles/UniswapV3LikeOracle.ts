@@ -1,22 +1,22 @@
+import { deployContract } from "@1inch/solidity-utils";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { Address } from "abitype";
 import { ethers } from "hardhat";
-import {
-    tokens,
-    testRate,
-    testRateOffchainOracle,
-    deployParams,
-    deployContract,
-} from "../helpers.js";
+import { MultiWrapperAbi } from "~/artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
+import { OffchainOracleAbi } from "~/artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
+import { MooniswapOracleAbi } from "~/artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
+import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
 import { UniswapV2LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV2LikeOracle.sol/UniswapV2LikeOracle.js";
 import { UniswapV3LikeOracleAbi } from "~/artifacts/contracts/oracles/UniswapV3LikeOracle.sol/UniswapV3LikeOracle.js";
 import { AaveWrapperV1Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV1.sol/AaveWrapperV1.js";
 import { AaveWrapperV2Abi } from "~/artifacts/contracts/wrappers/AaveWrapperV2.sol/AaveWrapperV2.js";
 import { BaseCoinWrapperAbi } from "~/artifacts/contracts/wrappers/BaseCoinWrapper.sol/BaseCoinWrapper.js";
-import { MooniswapOracleAbi } from "~/artifacts/contracts/oracles/MooniswapOracle.sol/MooniswapOracle.js";
-import { UniswapOracleAbi } from "~/artifacts/contracts/oracles/UniswapOracle.sol/UniswapOracle.js";
-import { MultiWrapperAbi } from "~/artifacts/contracts/MultiWrapper.sol/MultiWrapper.js";
-import { Address } from "abitype";
-import { OffchainOracleAbi } from "~/artifacts/contracts/OffchainOracle.sol/OffchainOracle.js";
+import {
+    deployParams,
+    testRate,
+    testRateOffchainOracle,
+    tokens,
+} from "../helpers.js";
 
 const { AaveWrapperV2, PancakeV3, Uniswap, UniswapV2, UniswapV3 } =
     deployParams;
