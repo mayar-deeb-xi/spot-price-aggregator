@@ -1,5 +1,10 @@
 import "@1inch/solidity-utils";
-import { DeployContractOptions } from "@1inch/solidity-utils";
+import {
+    DeployContractOptions,
+    DeployContractOptionsWithCreate3,
+} from "@1inch/solidity-utils";
+import { Contract } from "ethers";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
 import {
     DeployContractParameters,
     DeployContractReturn,
@@ -18,6 +23,11 @@ declare module "@1inch/solidity-utils" {
         } & Omit<DeployContractOptions, "constructorArgs">
     ): Promise<StrictBaseContract<abi>>;
 
+    function deployAndGetContractWithCreate3(
+        options: Omit<DeployContractOptionsWithCreate3, "deployments"> & {
+            deployments: HardhatRuntimeEnvironment["deployments"];
+        }
+    ): Promise<Contract>;
     // declare function trackReceivedTokenAndTx<T extends unknown[]>(
     //     provider:
     //         | JsonRpcProvider
