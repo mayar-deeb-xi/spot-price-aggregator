@@ -32,12 +32,6 @@ declare module "@1inch/solidity-utils" {
             deployments: HardhatRuntimeEnvironment["deployments"];
         }
     ): Promise<Contract>;
-
-    function deployAndGetContractWithCreate3(
-        options: Omit<DeployContractOptionsWithCreate3, "deployments"> & {
-            deployments: HardhatRuntimeEnvironment["deployments"];
-        }
-    ): Promise<Contract>;
     // declare function trackReceivedTokenAndTx<T extends unknown[]>(
     //     provider:
     //         | JsonRpcProvider
