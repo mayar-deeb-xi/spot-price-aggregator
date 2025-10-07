@@ -18,10 +18,20 @@ declare module "@1inch/solidity-utils" {
     ): Promise<DeployContractReturn<abi>>;
 
     function deployAndGetContract<abi extends Abi = Abi>(
-        options: {
+        options: Omit<
+            DeployContractOptions,
+            "constructorArgs" | "deployments"
+        > & {
             constructorArgs: DeployContractParameters<abi>;
-        } & Omit<DeployContractOptions, "constructorArgs">
+            deployments: HardhatRuntimeEnvironment["deployments"];
+        }
     ): Promise<StrictBaseContract<abi>>;
+
+    function deployAndGetContractWithCreate3(
+        options: Omit<DeployContractOptionsWithCreate3, "deployments"> & {
+            deployments: HardhatRuntimeEnvironment["deployments"];
+        }
+    ): Promise<Contract>;
 
     function deployAndGetContractWithCreate3(
         options: Omit<DeployContractOptionsWithCreate3, "deployments"> & {

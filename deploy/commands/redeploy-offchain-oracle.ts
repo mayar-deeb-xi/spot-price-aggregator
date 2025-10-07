@@ -16,7 +16,7 @@ const func: DeployFunction = async function ({
 
     const oldOffchainOracle = await getContract(deployments, "OffchainOracle");
 
-    const wBase = (await deployments.get("OffchainOracle")).args[4];
+    const wBase = (await deployments.get("OffchainOracle")).args?.[4];
     const oracles = await oldOffchainOracle.oracles();
 
     await deployAndGetContract({

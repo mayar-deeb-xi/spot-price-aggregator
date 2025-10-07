@@ -33,7 +33,7 @@ const func: DeployFunction = async function ({
             await oldOffchainOracle.multiWrapper(),
             [...oracles.allOracles],
             [...oracles.oracleTypes],
-            [...(await oldOffchainOracle.connectors())],
+            [...(await oldOffchainOracle.connectors())[0]],
             wBase,
             deployer,
         ],

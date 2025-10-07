@@ -11,7 +11,7 @@ import { StrictBaseContract } from "~/types/common";
 
 // not idemponent. Needs to be rewritten a bit if another run is required
 const _addCompoundTokens = async (
-    compoundLikeWrapper: StrictBaseContract,
+    compoundLikeWrapper: StrictBaseContract<CompoundLikeWrapperAbi>,
     cTokens: Array<Address>
 ) => {
     const tx = await compoundLikeWrapper.addMarkets(cTokens);

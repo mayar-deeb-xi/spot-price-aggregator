@@ -26,7 +26,7 @@ const func: DeployFunction = async function ({
     const offchainOracle = await getContract(deployments, "OffchainOracle");
     const multiWrapper = await getContract(deployments, "MultiWrapper");
     if (
-        ethers.getAddress(await offchainOracle.multiWrapper()) !==
+        ethers.getAddress((await offchainOracle.multiWrapper())[0]) !==
         ethers.getAddress(await multiWrapper.getAddress())
     ) {
         console.warn(

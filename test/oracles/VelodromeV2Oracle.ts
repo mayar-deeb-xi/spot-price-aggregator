@@ -82,24 +82,24 @@ describe("VelodromeV2Oracle", function () {
             );
             await measureGas(
                 await velodromeV2Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.WETH,
                         tokens.optimistic.USDC,
                         tokens.NONE,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "VelodromeV2Oracle WETH -> USDC"
             );
             await measureGas(
                 await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.WETH,
                         tokens.optimistic.USDC,
                         tokens.NONE,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "UniswapV3Oracle WETH -> USDC"
             );
         });
@@ -110,24 +110,24 @@ describe("VelodromeV2Oracle", function () {
             );
             await measureGas(
                 await velodromeV2Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.USDC,
                         tokens.optimistic.WETH,
                         tokens.NONE,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "VelodromeV2Oracle USDC -> WETH"
             );
             await measureGas(
                 await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.USDC,
                         tokens.optimistic.WETH,
                         tokens.NONE,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "UniswapV3Oracle USDC -> WETH"
             );
         });
@@ -138,24 +138,24 @@ describe("VelodromeV2Oracle", function () {
             );
             await measureGas(
                 await velodromeV2Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.WETH,
                         tokens.optimistic.USDC,
                         tokens.optimistic.OP,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "VelodromeV2Oracle WETH -> OP -> USDC"
             );
             await measureGas(
                 await uniswapV3Oracle
-                    .getFunction("getRate")
-                    .send(
+                    .getRate(
                         tokens.optimistic.WETH,
                         tokens.optimistic.USDC,
                         tokens.optimistic.OP,
                         thresholdFilter
-                    ),
+                    )
+                    .then((el) => el.tx),
                 "UniswapV3Oracle WETH -> OP -> USDC"
             );
         });

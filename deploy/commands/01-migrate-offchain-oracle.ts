@@ -1,4 +1,5 @@
 import { deployAndGetContract } from "@1inch/solidity-utils";
+import { Address } from "abitype";
 import hre, { ethers, getChainId } from "hardhat";
 import { DeployFunction } from "hardhat-deploy/types";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
@@ -200,7 +201,7 @@ const OraclesToUpdate = {
             exchangeName: "Swapr",
         },
     },
-} as const;
+} as any;
 
 const func: DeployFunction = async function ({
     deployments,
@@ -210,7 +211,7 @@ const func: DeployFunction = async function ({
     console.log(`running ${networkName} deploy script`);
     const chainId = await getChainId();
     console.log("network id ", chainId);
-    if (chainId !== hre.config.networks[networkName].chainId.toString()) {
+    if (chainId !== hre.config.networks[networkName].chainId?.toString()) {
         console.log(
             `network chain id: ${hre.config.networks[networkName].chainId}, your chain id ${chainId}`
         );
@@ -242,7 +243,7 @@ const func: DeployFunction = async function ({
             OraclesToUpdate[networkName][oracles.allOracles[i]].exchangeName;
         let oracle;
         let isNoDeployments = false;
-        let params = [];
+        let params: any[] | undefined = [];
         try {
             params = (
                 await deployments.get(
@@ -280,6 +281,7 @@ const func: DeployFunction = async function ({
                     params = [await oracle.factory()];
                     break;
                 case "UniswapOracle":
+                    OraclesToUpdate[networkName];
                     params =
                         OraclesToUpdate[networkName][oracles.allOracles[i]]
                             .params;
@@ -312,7 +314,7 @@ const func: DeployFunction = async function ({
             existingOracles,
             oracleTypes,
             await offchainOracle.connectors(),
-            (await deployments.get("OffchainOracle")).args[4],
+            (await deployments.get("OffchainOracle")).args?.[4],
         ],
         deployments,
         deployer,
@@ -321,7 +323,7 @@ const func: DeployFunction = async function ({
     });
 };
 
-async function attachContract(contractName, address) {
+async function attachContract(contractName: string, address: Address) {
     const Contract = await ethers.getContractFactory(contractName);
     return Contract.attach(address);
 }

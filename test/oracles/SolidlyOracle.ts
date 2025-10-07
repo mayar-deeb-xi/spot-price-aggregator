@@ -109,7 +109,7 @@ describe("SolidlyOracle", function () {
                 const { oracle, uniswapV3Oracle } = await loadFixture(fixture);
                 // Test only for Aerodrome
 
-                if ((await oracle.FACTORY()) !== Aerodrome.factory) {
+                if ((await oracle.FACTORY())[0] !== Aerodrome.factory) {
                     this.skip();
                 }
                 await testRate(
@@ -125,7 +125,7 @@ describe("SolidlyOracle", function () {
             it("WETH -> rETH", async function () {
                 const { oracle, uniswapV3Oracle } = await loadFixture(fixture);
                 // Test only for Aerodrome
-                if ((await oracle.FACTORY()) !== Aerodrome.factory) {
+                if ((await oracle.FACTORY())[0] !== Aerodrome.factory) {
                     this.skip();
                 }
                 await testRate(
